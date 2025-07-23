@@ -6,7 +6,7 @@ from tkinter import ttk, messagebox, filedialog
 
 # To use a remote manifest, replace 'manifest.json' with your manifest URL (e.g., 'https://yourserver.com/manifest.json')
 # Make sure your Python HTTP server is running in the 'RestonApps' folder on your Desktop.
-MANIFEST_URL = "https://github.com/Sumant-Reston/AppLauncher/blob/main/manifest.json"
+MANIFEST_URL = "https://raw.githubusercontent.com/Sumant-Reston/AppLauncher/main/manifest.json"
 DEFAULT_INSTALL_DIR = os.path.join(os.path.expanduser("~"), "Desktop", "RestonDownload")
 
 def download_from_gdrive(url, dest_path):
@@ -37,15 +37,7 @@ class AppLauncher(tk.Tk):
         self.load_manifest()
 
     def create_widgets(self):
-        # IP/Port entry at the top
-        self.server_url_var = tk.StringVar(value=MANIFEST_URL)
-        server_frame = tk.Frame(self)
-        server_frame.pack(pady=(10, 0))
-        tk.Label(server_frame, text="Manifest URL:").pack(side=tk.LEFT, padx=5)
-        self.server_entry = tk.Entry(server_frame, textvariable=self.server_url_var, width=50, justify="center")
-        self.server_entry.pack(side=tk.LEFT, padx=5)
-        tk.Button(server_frame, text="Set", command=self.change_server_url).pack(side=tk.LEFT, padx=5)
-
+        # Remove Manifest URL entry from the GUI
         self.header_label = tk.Label(self, text="Reston Launcher", font=("Arial", 16, "bold"))
         self.header_label.pack(pady=(10, 10))
 
@@ -166,11 +158,8 @@ class AppLauncher(tk.Tk):
             messagebox.showerror("Error", f"Failed to launch: {e}")
 
     def change_server_url(self):
-        global MANIFEST_URL
-        new_url = self.server_url_var.get().strip()
-        if new_url:
-            MANIFEST_URL = new_url
-            self.load_manifest()
+        # Remove this method since the manifest URL is now fixed
+        pass
 
 if __name__ == "__main__":
     app = AppLauncher()

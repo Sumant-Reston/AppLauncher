@@ -4,84 +4,74 @@
 
 ### A. Folder Structure
 
-1. On your Desktop, create a folder named `RestonApps`.
-2. Place your application `.exe` files and `manifest.json` in this folder.
+1. On your Desktop, create a folder named `RestonApps` (optional, only if you want to keep local copies).
+2. Place your application `.exe` files and `manifest.json` in this folder if you want to test locally. For production, files are hosted on GitHub.
 
 ---
 
-### B. Start the Internal Web Server
+## 2. Hosting Your Apps and Manifest
 
-1. Open **Command Prompt**.
-2. Navigate to the `RestonApps` folder:
-   ```sh
-   cd %USERPROFILE%\Desktop\RestonApps
-   ```
-3. Start the Python HTTP server:
-   ```sh
-   python -m http.server 8080
-   ```
-   This will serve files at: [http://<your-ip>:8080/](http://<your-ip>:8080/)
-4. Leave this window open while the server is running.
-5. To find your IP address:
-   - Run `ipconfig` in Command Prompt.
-   - Look for **IPv4 Address** (e.g., `192.168.1.100`).
+- The `manifest.json` and application files are now hosted on GitHub.
+- The launcher fetches the manifest from:
+  ```
+  https://raw.githubusercontent.com/Sumant-Reston/AppLauncher/main/manifest.json
+  ```
+- Each app's download URL in the manifest should point to a GitHub Releases direct link, e.g.:
+  ```
+  https://github.com/Sumant-Reston/Quote_Sheet_JSON_Conversion/releases/download/v1.0.0/QSC.exe
+  ```
 
 ---
 
-### C. Configure the Launcher
+## 3. How to Add a New Application
 
-In your `launch.py` file, set:
-
-```python
-MANIFEST_URL = "http://<your-ip>:8080/manifest.json"
-```
-Replace `<your-ip>` with your actual IP address from the previous step.
-
----
-
-## 2. How to Add a New Application
-
-1. Copy the new `.exe` into the `RestonApps` folder.
-2. Edit `manifest.json` to include the new app. Example:
+1. Upload the new `.exe` (or `.zip`) to your GitHub Releases.
+2. Edit `manifest.json` in your GitHub repo to include the new app. Example:
 
 ```json
 {
   "QSC": {
     "version": "1.0.0",
-    "url": "http://<your-ip>:8080/QSC.exe"
+    "url": "https://github.com/Sumant-Reston/Quote_Sheet_JSON_Conversion/releases/download/v1.0.0/QSC.exe"
   },
   "NewApp": {
     "version": "1.0.0",
-    "url": "http://<your-ip>:8080/NewApp.exe"
+    "url": "https://github.com/Sumant-Reston/YourRepo/releases/download/v1.0.0/NewApp.exe"
   }
 }
 ```
 
-3. Save `manifest.json`.
+3. Save and commit `manifest.json` to GitHub.
 4. Refresh the launcher.
 
 ---
 
-## 3. How to Update an Existing Application
+## 4. How to Update an Existing Application
 
-1. Replace the old `.exe` with the new one (keep the filename the same).
-2. Update the version in `manifest.json`. Example:
+1. Upload the new version of the `.exe` (or `.zip`) to a new GitHub Release.
+2. Update the version and URL in `manifest.json`.
 
 ```json
 "QSC": {
   "version": "1.1.0",
-  "url": "http://<your-ip>:8080/QSC.exe"
+  "url": "https://github.com/Sumant-Reston/Quote_Sheet_JSON_Conversion/releases/download/v1.1.0/QSC.exe"
 }
 ```
 
-3. Save `manifest.json`.
+3. Save and commit `manifest.json` to GitHub.
 4. Users will see “Update available” in the launcher.
 
 ---
 
-## 4. Download Location
+## 5. Download Location
 
 Apps are saved to:
 ```
 C:\Users\<YourName>\Desktop\RestonDownload\<AppName>\<AppName>.exe
 ```
+
+---
+
+## 6. Notes
+- The manifest URL is now set in the code (`launch.py`) and cannot be changed from the launcher GUI.
+- No local server is required; everything is fetched from GitHub.
