@@ -2,12 +2,13 @@ import os
 import json
 import requests
 import tkinter as tk
-from tkinter import ttk, messagebox, filedialog
+from tkinter import ttk, messagebox
 
 # To use a remote manifest, replace 'manifest.json' with your manifest URL (e.g., 'https://yourserver.com/manifest.json')
 # Make sure your Python HTTP server is running in the 'RestonApps' folder on your Desktop.
 MANIFEST_URL = "https://raw.githubusercontent.com/Sumant-Reston/AppLauncher/main/manifest.json"
-DEFAULT_INSTALL_DIR = os.path.join(os.path.expanduser("~"), "Desktop", "RestonDownload")
+DEFAULT_INSTALL_DIR = os.path.join(os.path.expanduser("~"), "Desktop", "Reston_Applications")
+
 
 def download_from_gdrive(url, dest_path):
     session = requests.Session()
@@ -26,6 +27,7 @@ def download_from_gdrive(url, dest_path):
             if chunk:
                 f.write(chunk)
 
+
 class AppLauncher(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -37,16 +39,8 @@ class AppLauncher(tk.Tk):
         self.load_manifest()
 
     def create_widgets(self):
-        # Remove Manifest URL entry from the GUI
         self.header_label = tk.Label(self, text="Reston Launcher", font=("Arial", 16, "bold"))
         self.header_label.pack(pady=(10, 10))
-
-        loc_frame = tk.Frame(self)
-        loc_frame.pack(pady=5)
-        tk.Label(loc_frame, text="Install location:").pack(side=tk.LEFT, padx=5)
-        self.loc_var = tk.StringVar(value=self.install_dir)
-        tk.Entry(loc_frame, textvariable=self.loc_var, width=40, justify="center").pack(side=tk.LEFT, padx=5)
-        tk.Button(loc_frame, text="Browse", command=self.choose_folder).pack(side=tk.LEFT)
 
         # Fixed-size frame for app list, centered
         self.app_list_frame = tk.Frame(self)
@@ -104,13 +98,6 @@ class AppLauncher(tk.Tk):
         elif action == "Launch":
             self.launch_app(app_name)
 
-    def choose_folder(self):
-        folder = filedialog.askdirectory(initialdir=self.install_dir)
-        if folder:
-            self.install_dir = folder
-            self.loc_var.set(folder)
-            self.populate_tree()
-
     def load_manifest(self):
         try:
             resp = requests.get(MANIFEST_URL)
@@ -156,10 +143,6 @@ class AppLauncher(tk.Tk):
             os.startfile(exe_path)
         except Exception as e:
             messagebox.showerror("Error", f"Failed to launch: {e}")
-
-    def change_server_url(self):
-        # Remove this method since the manifest URL is now fixed
-        pass
 
 if __name__ == "__main__":
     app = AppLauncher()

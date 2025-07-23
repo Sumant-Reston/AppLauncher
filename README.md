@@ -4,14 +4,14 @@
 
 ### A. Folder Structure
 
-1. On your Desktop, create a folder named `RestonApps` (optional, only if you want to keep local copies).
-2. Place your application `.exe` files and `manifest.json` in this folder if you want to test locally. For production, files are hosted on GitHub.
+- The launcher will automatically install applications to your Desktop in a folder named `Reston_Applications`.
+- No setup is required for the install location; users cannot change this location.
 
 ---
 
 ## 2. Hosting Your Apps and Manifest
 
-- The `manifest.json` and application files are now hosted on GitHub.
+- The `manifest.json` and application files are hosted on GitHub.
 - The launcher fetches the manifest from:
   ```
   https://raw.githubusercontent.com/Sumant-Reston/AppLauncher/main/manifest.json
@@ -67,11 +67,12 @@
 
 Apps are saved to:
 ```
-C:\Users\<YourName>\Desktop\RestonDownload\<AppName>\<AppName>.exe
+C:\Users\<YourName>\Desktop\Reston_Applications\<AppName>\<AppName>.exe
 ```
 
 ---
 
 ## 6. Notes
-- The manifest URL is now set in the code (`launch.py`) and cannot be changed from the launcher GUI.
+- The install location is fixed and cannot be changed by the user.
+- The manifest URL is set in the code (`launch.py`) and cannot be changed from the launcher GUI.
 - No local server is required; everything is fetched from GitHub.
