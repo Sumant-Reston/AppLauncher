@@ -1,61 +1,87 @@
-Reston Launcher: Setup & Usage Guide
+# Reston Launcher: Setup & Usage Guide
 
-1. Initial Setup
+## 1. Initial Setup
 
-A. Folder Structure
+### A. Folder Structure
 
-- On your Desktop, create a folder named: RestonApps
-- Place your application .exe files and manifest.json in this folder.
+1. On your Desktop, create a folder named `RestonApps`.
+2. Place your application `.exe` files and `manifest.json` in this folder.
 
 ---
 
-B. Start the Internal Web Server
+### B. Start the Internal Web Server
 
-1. Open Command Prompt.
-2. Navigate to the RestonApps folder:
+1. Open **Command Prompt**.
+2. Navigate to the `RestonApps` folder:
+   ```sh
+   cd %USERPROFILE%\Desktop\RestonApps
+   ```
 3. Start the Python HTTP server:
-python -m http.server 8080
-(This will serve files at http://<your-ip>:8080/)
+   ```sh
+   python -m http.server 8080
+   ```
+   This will serve files at: [http://<your-ip>:8080/](http://<your-ip>:8080/)
 4. Leave this window open while the server is running.
-5. To find your IP address: (DONT CHANGE SHOULD BE SAME NOW)
-Run ipconfig in Command Prompt.
-Look for "IPv4 Address" (e.g., **********).
+5. To find your IP address:
+   - Run `ipconfig` in Command Prompt.
+   - Look for **IPv4 Address** (e.g., `192.168.1.100`).
 
 ---
 
-C. Configure the Launcher
-In your [launch.py](http://launch.py/) file, set:
-MANIFEST_URL = "http://**********/manifest.json"
-(Replace with your actual IP address)
+### C. Configure the Launcher
 
-1. How to Add a New Application
-2. Copy the new .exe into the RestonApps folder.
-3. Edit manifest.json to include the new app:
+In your `launch.py` file, set:
 
+```python
+MANIFEST_URL = "http://<your-ip>:8080/manifest.json"
+```
+Replace `<your-ip>` with your actual IP address from the previous step.
+
+---
+
+## 2. How to Add a New Application
+
+1. Copy the new `.exe` into the `RestonApps` folder.
+2. Edit `manifest.json` to include the new app. Example:
+
+```json
 {
+  "QSC": {
+    "version": "1.0.0",
+    "url": "http://<your-ip>:8080/QSC.exe"
+  },
+  "NewApp": {
+    "version": "1.0.0",
+    "url": "http://<your-ip>:8080/NewApp.exe"
+  }
+}
+```
+
+3. Save `manifest.json`.
+4. Refresh the launcher.
+
+---
+
+## 3. How to Update an Existing Application
+
+1. Replace the old `.exe` with the new one (keep the filename the same).
+2. Update the version in `manifest.json`. Example:
+
+```json
 "QSC": {
-"version": "1.0.0",
-"url": "http://**********/QSC.exe"
-},
-"NewApp": {
-"version": "1.0.0",
-"url": "http://**********/NewApp.exe"
+  "version": "1.1.0",
+  "url": "http://<your-ip>:8080/QSC.exe"
 }
-}
+```
 
-1. Save manifest.json.
-2. Refresh the launcher.
-3. How to Update an Existing Application
-4. Replace the old .exe with the new one (keep the filename the same).
-5. Update the version in manifest.json:
+3. Save `manifest.json`.
+4. Users will see “Update available” in the launcher.
 
-"QSC": {
-"version": "1.1.0",
-"url": "http://**********/QSC.exe"
-}
+---
 
-1. Save manifest.json.
-2. Users will see “Update available” in the launcher.
+## 4. Download Location
 
 Apps are saved to:
+```
 C:\Users\<YourName>\Desktop\RestonDownload\<AppName>\<AppName>.exe
+```
