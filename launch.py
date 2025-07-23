@@ -6,7 +6,7 @@ from tkinter import ttk, messagebox, filedialog
 
 # To use a remote manifest, replace 'manifest.json' with your manifest URL (e.g., 'https://yourserver.com/manifest.json')
 # Make sure your Python HTTP server is running in the 'RestonApps' folder on your Desktop.
-MANIFEST_URL = "http://192.168.1.187:8080/manifest.json"
+MANIFEST_URL = "https://github.com/Sumant-Reston/AppLauncher/blob/main/manifest.json"
 DEFAULT_INSTALL_DIR = os.path.join(os.path.expanduser("~"), "Desktop", "RestonDownload")
 
 def download_from_gdrive(url, dest_path):

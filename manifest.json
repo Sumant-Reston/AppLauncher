@@ -1,6 +1,6 @@
 {
   "QSC": {
     "version": "1.0.0",
-    "url": "http://192.168.1.187:8080/QSC.exe"
+    "url": "https://github.com/Sumant-Reston/Quote_Sheet_JSON_Conversion/releases/download/v1.0.0/QSC.exe"
   }
-} 
+}
