@@ -1,23 +1,16 @@
 {
-  "YourAppName1": {
+  "QSC": {
     "version": "1.0.0",
-    "url": "https://example.com/YourAppName1.exe",
-    "description": "This is a description for YourAppName1. It tells you what the app is about and its main features.",
+    "url": "https://github.com/Sumant-Reston/Quote_Sheet_JSON_Conversion/releases/download/v1.0.0/QSC.exe",
+    "description": "This program turns Excel sheets into JSON files, streamlining data conversion for various applications.",
     "iconUrl": "https://styles.redditmedia.com/t5_2stwn/styles/communityIcon_b1ficdvyllse1.png",
-    "patchNotes": "• Initial release.\n• Added basic functionality.\n• Improved user interface."
+    "patchNotes": "• Initial release of QSC.\n• Converts Excel data to JSON format.\n• Supports various Excel sheet structures."
   },
-  "YourAppName2": {
-    "version": "2.1.0",
-    "url": "https://example.com/YourAppName2.exe",
-    "description": "YourAppName2 is an advanced application with many powerful tools. This version brings significant improvements.",
-    "iconUrl": "https://example.com/icons/YourAppName2_icon.png",
-    "patchNotes": "• Fixed critical bug in data processing.\n• Enhanced performance by 15%.\n• New 'Dark Mode' theme added.\n• Minor UI adjustments."
-  },
-  "AnotherApp": {
-    "version": "1.5.0",
-    "url": "https://example.com/AnotherApp.exe",
-    "description": "AnotherApp helps you manage your daily tasks efficiently.",
-    "iconUrl": "https://example.com/icons/AnotherApp_icon.png",
-    "patchNotes": "• Implemented cloud synchronization.\n• Added reminder notifications.\n• UI optimizations for larger screens."
+  "NewApp": {
+    "version": "1.0.0",
+    "url": "https://github.com/Sumant-Reston/YourRepo/releases/download/v1.0.0/NewApp.exe",
+    "description": "A brand new application designed to boost your productivity with innovative features.",
+    "iconUrl": "https://styles.redditmedia.com/t5_2stwn/styles/communityIcon_b1ficdvyllse1.png",
+    "patchNotes": "• First public release of NewApp.\n• Introduced core productivity features.\n• Minor bug fixes and performance improvements."
   }
 }
