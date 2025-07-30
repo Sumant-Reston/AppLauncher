@@ -2,11 +2,13 @@
   "QSC": {
     "version": "1.0.0",
     "url": "https://github.com/Sumant-Reston/Quote_Sheet_JSON_Conversion/releases/download/v1.0.0/QSC.exe",
-    "description": "This program turns Excel sheets into JSON files, streamlining data conversion for various applications."
+    "description": "This program turns Excel sheets into JSON files, streamlining data conversion for various applications.",
+    "iconUrl": "https://raw.githubusercontent.com/Sumant-Reston/AppLauncher/main/icons/qsc_icon.png"
   },
   "NewApp": {
     "version": "1.0.0",
     "url": "https://github.com/Sumant-Reston/YourRepo/releases/download/v1.0.0/NewApp.exe",
-    "description": "A brand new application designed to boost your productivity with innovative features."
+    "description": "A brand new application designed to boost your productivity with innovative features.",
+    "iconUrl": "https://raw.githubusercontent.com/Sumant-Reston/AppLauncher/main/icons/newapp_icon.png"
   }
 }
